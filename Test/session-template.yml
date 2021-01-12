@@ -1,0 +1,22 @@
+name: $SESSION
+digest: somedigest
+
+services:
+   - name: hello
+     image_name: hello
+     mrenclaves: [$MRENCLAVE]
+     tags: [scone-python]
+     command: "python /fspf/encrypted-files/hello.py"
+     environment:
+      SCONE_MODE: hw
+      SCONE_LOG: "7"
+     pwd: /
+     fspf_tag: $SCONE_FSPF_TAG
+     fspf_key: $SCONE_FSPF_KEY
+     fspf_path: /fspf/fs.fspf
+
+images:
+   - name: hello
+     mrenclaves: [$MRENCLAVE]
+     tags: [scone-python]
+
