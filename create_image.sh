@@ -3,7 +3,7 @@ trap "echo Unexpected error! See log above; exit 1" ERR
 
 # CONFIG Parameters (might change)
 
-export SCONE_CAS_ADDR="scone-cas.cf"
+export SCONE_CAS_ADDR="5-0-0.scone-cas.cf"
 export DEVICE="/dev/sgx"
 
 export SCONE_CAS_IMAGE="registry.scontain.com:5050/sconecuratedimages/services:cas"
@@ -50,7 +50,7 @@ docker pull $CLI_IMAGE
 # docker run --device=$DEVICE -it $CLI_IMAGE sh -c "scone cas attest -G --only_for_testing-debug scone-cas.cf $CAS_MRENCLAVE >/dev/null \
 # && scone cas show-certificate" > cas-ca.pem
 
-docker run --device=$DEVICE -it $CLI_IMAGE sh -c "scone cas attest scone-cas.cf --only_for_testing-debug \
+docker run --device=$DEVICE -it $CLI_IMAGE sh -c "scone cas attest 5-0-0.scone-cas.cf --only_for_testing-debug \
 --only_for_testing-trust-any --only_for_testing-ignore-signer -G >/dev/null \
 && scone cas show-certificate" > cas-ca.pem
 
